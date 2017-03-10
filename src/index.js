@@ -130,7 +130,51 @@ const data = [{
   "wiki" : "http://en.wikipedia.org/wiki/Audi_TT"
 }];
 
-for (let i = 0; i < data.length; i++) {
-  const car = data[i];
-  console.log(car);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function reduce(arr, reducer, initialValue) {
+//   console.log('Array:', arr);
+//   console.log('Reducer:', reducer);
+//   console.log('Initial value:', initialValue);
+//   let sum = initialValue;
+//   for (let i = 0; i < arr.length; i++) {
+//     const elem = arr[i];
+//     reducer(sum, elem);
+//   }
+// }
+//
+//
+// reduce(data, function(sum, car) {
+//   return sum + car;
+// }, 0);
+
+
+// for (let i = 0; i < data.length; i++) {
+//   const car = data[i];
+// }
+//
+// let average = data.reduce(function(sum, car) {
+//   return sum + car.price
+// }, 0);
+
+// average = average / data.length;
+// console.log(average);
+//
+// let avgQuality = data.map(car => {
+//   return car.quality.reduce((sum, qual) => sum + qual.rating, 0) / car.quality.length;
+// });
+// console.log(avgQuality);
+//
+// let prices = data.map(car => car.price);
+// console.log(prices);

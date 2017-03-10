@@ -1,4 +1,4 @@
-const data = [{
+export default data = [{
   "title": "Dawn of the Planet of the Apes",
   "image": "http://api.androidhive.info/json/movies/1.jpg",
   "rating": 8.3,
