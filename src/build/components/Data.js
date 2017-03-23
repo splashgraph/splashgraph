@@ -5,8 +5,19 @@ import forEach from 'lodash/forEach';
 
 export default class Data extends React.Component {
 
-  loadData(url) {
-    d3.csv(url, data => {
+  constructor(props) {
+    super(props);
+    this.handleFileChange = this.handleFileChange.bind(this);
+  }
+
+  handleFileChange(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = event => {
+      console.log('--------');
+      console.log(event.target.result);
+      let data = d3.csvParse(event.target.result);
       const columns = data.columns;
       delete data.columns;
       data = data.map(d => {
@@ -18,7 +29,7 @@ export default class Data extends React.Component {
         return newD;
       });
       this.props.setData(data, columns);
-    });
+    };
   }
 
   render() {
@@ -27,6 +38,7 @@ export default class Data extends React.Component {
         <h1>Data</h1>
         <div className="row row--autofill">
           <div className="col">
+            <input type="file" onChange={this.handleFileChange}/>
           </div>
           <div className="col">
             <div style={{overflow: 'scroll'}}>
