@@ -10,7 +10,7 @@ const environment = {
 }[process.env.NODE_ENV || 'development'];
 
 module.exports = Object.assign({
-  databaseUrl: 'mongodb://localhost/talegraph-dev',
+  databaseUrl: process.env.MONGODB_URI || 'mongodb://localhost/talegraph-dev',
   host: process.env.HOST || 'localhost',
   port: process.env.PORT,
   apiHost: process.env.APIHOST || 'localhost',
