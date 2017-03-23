@@ -1,21 +1,22 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import config from '../src/config';
 import PrettyError from 'pretty-error';
 import http from 'http';
 
-const pretty = new PrettyError();
+import config from '../src/config';
+import story from './story';
+
 const app = express();
 
 const server = new http.Server(app);
 
+mongoose.connect(config.databaseUrl);
 
 app.use(bodyParser.json());
 
 
-app.use((req, res) => {
-  res.send('Hello world');
-});
+app.use('/stories', story.router);
 
 if (config.apiPort) {
   app.listen(config.apiPort, (err) => {
