@@ -38,6 +38,7 @@ export default class StoryPoint extends React.Component {
             data={data}
             columns={columns}
             dimensions={dimensions}
+            templateName={this.props.templateName}
             setDimension={this.props.setDimension}
           />
         );

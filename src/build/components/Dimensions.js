@@ -1,14 +1,15 @@
 import React from 'react';
 
 import graphs from '../../graphs';
-const {dimensionTypes} = graphs.graphs.ScatterPlot;
+const templates = graphs.graphs;
 
 export default class Dimensions extends React.Component {
   render() {
+    const Template = templates[this.props.templateName];
     const columns = this.props.columns.map(column => {
       return <option key={column} value={column}>{column}</option>;
     });
-    const dimensions = dimensionTypes.map((dimension, index) => {
+    const dimensions = Template.dimensionTypes.map((dimension, index) => {
       return (
         <div key={index}>
           {dimension.label}

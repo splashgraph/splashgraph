@@ -33,7 +33,10 @@ export default class Builder extends React.Component {
   }
 
   add() {
-    const newStoryPoint = Object.assign({}, this.props.story.storyPoints[this.props.story.storyPoints.length - 1]);
+    const newStoryPoint = Object.assign({}, this.props.story.storyPoints[this.props.story.storyPoints.length - 1], {
+      title: '',
+      description: ''
+    });
     this.props.addStoryPoint(newStoryPoint);
     this.goTo(this.props.story.storyPoints.length);
   }
@@ -77,6 +80,7 @@ export default class Builder extends React.Component {
           <div className="col col--5">
             <StoryPoint
               storyPoint={this.getCurrent()}
+              templateName={this.props.story.templateName}
               setDimension={this.setDimension}
               setData={this.setData}
               setTitle={title => this.props.setTitle(this.state.currentIndex, title)}

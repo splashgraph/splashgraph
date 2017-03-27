@@ -6,7 +6,7 @@ import graphs from '../../graphs';
 
 export default class Templates extends React.Component {
   pickTemplate(graph) {
-    this.props.setTemplate(graph.info.name);
+    this.props.setupStory(graph.info.name);
     browserHistory.push('/create/build');
   }
 

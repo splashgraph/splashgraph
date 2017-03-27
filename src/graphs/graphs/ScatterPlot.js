@@ -1,63 +1,6 @@
 import * as d3 from 'd3';
-import mapValues from 'lodash/mapValues';
 
-const DIMENSION_TYPES = [{
-  field: 'x',
-  label: 'X',
-  type: 'number'
-}, {
-  field: 'y',
-  label: 'Y',
-  type: 'number'
-}, {
-  field: 'r',
-  label: 'Radius',
-  type: 'number'
-}, {
-  field: 'label',
-  label: 'Label',
-  optional: true
-}, {
-  field: 'color',
-  label: 'Color',
-  optional: true
-}];
-
-const OPTION_TYPES = [{
-  name: 'colors',
-  label: 'colors',
-  type: 'colors',
-}, {
-  name: 'transitionDuration',
-  label: 'Transition duration',
-  type: 'number'
-}, {
-  name: 'origin',
-  label: 'Set origin (0,0)',
-  type: 'checkbox'
-}];
-
-const DEFAULT_OPTIONS = {
-  colors: ["#ceb992", "#73937e", "#585563", "#5b2e48", "#471323", "#6a0136", "#bfab25", "#b81365", "#026c7c", "#055864"],
-  transitionDuration: 1000,
-  origin: false
-};
-
-const hasDimensions = (dimensions) => {
-  return DIMENSION_TYPES.every(dimension => {
-    return dimensions[dimension.field] || dimension.optional;
-  });
-};
-
-const mapData = (data, dimensions, dataKey) => {
-  return data.map(d => {
-    const newD = mapValues(dimensions, value => {
-      return d[value];
-    });
-    newD.id = d[dataKey];
-    return newD;
-  });
-};
+import {hasDimensions, mapData} from './helpers';
 
 class ScatterPlot {
   constructor(svg) {
@@ -77,10 +20,10 @@ class ScatterPlot {
   }
 
   draw(data, dimensions, options) {
-    data = mapData(data, dimensions, options.dataKey);
+    data = mapData(data, dimensions, ScatterPlot.dimensionTypes, options.dataKey);
     options = Object.assign({}, ScatterPlot.defaultOptions, options);
 
-    if (hasDimensions(dimensions)) {
+    if (hasDimensions(dimensions, ScatterPlot.dimensionTypes)) {
       const getX = d => d.x;
       const getY = d => d.y;
       const getR = d => d.r;
@@ -190,9 +133,45 @@ ScatterPlot.info = {
   title: 'Scatter Plot',
   description: 'Lorem ipsum dolor sit amet consecetur dorem aelit.'
 };
-ScatterPlot.dimensionTypes = DIMENSION_TYPES;
-ScatterPlot.optionTypes = OPTION_TYPES;
-ScatterPlot.defaultOptions = DEFAULT_OPTIONS;
+ScatterPlot.dimensionTypes = [{
+  field: 'x',
+  label: 'X',
+  type: 'number'
+}, {
+  field: 'y',
+  label: 'Y',
+  type: 'number'
+}, {
+  field: 'r',
+  label: 'Radius',
+  type: 'number'
+}, {
+  field: 'label',
+  label: 'Label',
+  optional: true
+}, {
+  field: 'color',
+  label: 'Color',
+  optional: true
+}];
+ScatterPlot.optionTypes = [{
+  name: 'colors',
+  label: 'colors',
+  type: 'colors',
+}, {
+  name: 'transitionDuration',
+  label: 'Transition duration',
+  type: 'number'
+}, {
+  name: 'origin',
+  label: 'Set origin (0,0)',
+  type: 'checkbox'
+}];
+ScatterPlot.defaultOptions = {
+  colors: ['#ceb992', '#73937e', '#585563', '#5b2e48', '#471323', '#6a0136', '#bfab25', '#b81365', '#026c7c', '#055864'],
+  transitionDuration: 1000,
+  origin: false
+};
 
 export default ScatterPlot;
 
