@@ -10,7 +10,7 @@ const StoryPointSchema = new Schema({
 const StorySchema = new Schema({
   title: String,
   description: String,
-  template: String,
+  templateName: String,
   options: Schema.Types.Mixed,
   storyPoints: [StoryPointSchema]
 });

@@ -5,7 +5,6 @@ export default class CreateView extends React.Component {
   render() {
     return (
       <div>
-        <h1>Create new story</h1>
         <ul>
           <li><Link to="/create/build">1. Build</Link></li>
           <li><Link to="/create/customize">2. Customize</Link></li>

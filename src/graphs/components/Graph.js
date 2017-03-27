@@ -5,8 +5,8 @@ import graphs from '../graphs';
 class Graph extends React.Component {
 
   componentDidMount() {
-    const template = graphs[this.props.template];
-    this.graph = new template(this.svg);
+    const Template = graphs[this.props.templateName];
+    this.graph = new Template(this.svg);
     this.graph.draw(this.props.storyPoint.data, this.props.storyPoint.dimensions, this.props.options);
   }
 
@@ -18,6 +18,10 @@ class Graph extends React.Component {
     return (
       <div>
         <svg ref={svg => this.svg = svg}/>
+        <div>
+          <h4>{this.props.storyPoint.title}</h4>
+          {this.props.storyPoint.description}
+        </div>
       </div>
     );
   }

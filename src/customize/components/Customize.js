@@ -8,13 +8,27 @@ import InputNumber from './InputNumber';
 import InputColors from './InputColors';
 
 const {Story} = story.components;
-const {optionTypes, defaultOptions} = graphs.graphs.ScatterPlot;
 
 export default class Customize extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      defaultOptions: {},
+      optionTypes: []
+    };
+  }
+
+  componentDidMount() {
+    const {optionTypes, defaultOptions} = graphs.graphs[this.props.story.templateName];
+    this.setState({
+      optionTypes,
+      defaultOptions
+    });
+  }
 
   render() {
-    const options = Object.assign({}, defaultOptions, this.props.story.options);
-    const optionInputs = optionTypes.map((option, index) => {
+    const options = Object.assign({}, this.state.defaultOptions, this.props.story.options);
+    const optionInputs = this.state.optionTypes.map((option, index) => {
       let input;
       switch (option.type) {
         case 'number':

@@ -79,14 +79,15 @@ export default class Builder extends React.Component {
               storyPoint={this.getCurrent()}
               setDimension={this.setDimension}
               setData={this.setData}
-              setDescription={this.props.setStoryPoin}
+              setTitle={title => this.props.setTitle(this.state.currentIndex, title)}
+              setDescription={description => this.props.setDescription(this.state.currentIndex, description)}
             />
           </div>
           <div className="col col--7">
             <Graph
               storyPoint={this.getCurrent()}
               options={this.props.story.options}
-              template={this.props.story.template}
+              templateName={this.props.story.templateName}
             />
           </div>
         </div>

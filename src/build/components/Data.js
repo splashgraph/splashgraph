@@ -15,8 +15,6 @@ export default class Data extends React.Component {
     const reader = new FileReader();
     reader.readAsText(file);
     reader.onload = event => {
-      console.log('--------');
-      console.log(event.target.result);
       let data = d3.csvParse(event.target.result);
       const columns = data.columns;
       delete data.columns;
@@ -35,7 +33,6 @@ export default class Data extends React.Component {
   render() {
     return (
       <div>
-        <h1>Data</h1>
         <div className="row row--autofill">
           <div className="col">
             <input type="file" onChange={this.handleFileChange}/>

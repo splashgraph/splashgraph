@@ -30,7 +30,7 @@ export default class Story extends React.Component {
         <Graph
           storyPoint={this.getCurrent()}
           options={this.props.story.options}
-          template={this.props.story.template}
+          templateName={this.props.story.templateName}
         />
         <ul>
           {storyPoints}

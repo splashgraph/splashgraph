@@ -1,4 +1,5 @@
 import React from 'react';
+import {browserHistory} from 'react-router';
 
 import story from '../../story';
 const {Story} = story.components;
@@ -10,8 +11,16 @@ export default class Publish extends React.Component {
     this.publish = this.publish.bind(this);
   }
 
+  componentWillUpdate(nextProps) {
+    if (!nextProps.isLoading && this.props.isLoading) {
+      if (nextProps.isLoaded) {
+        browserHistory.push('/create/completed');
+      }
+    }
+  }
+
   publish() {
-    console.log(JSON.stringify(this.props.story));
+    this.props.createStory(this.props.story);
   }
 
   render() {

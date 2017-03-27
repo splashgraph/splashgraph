@@ -2,6 +2,7 @@ import React from 'react';
 
 import Data from './Data';
 import Dimensions from './Dimensions';
+import Text from './Text';
 
 export default class StoryPoint extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export default class StoryPoint extends React.Component {
   }
 
   render() {
-    const {data, columns, dimensions} = this.props.storyPoint;
+    const {data, columns, dimensions, title, description} = this.props.storyPoint;
     let tab;
     switch (this.state.currentTab) {
       case 'data':
@@ -44,6 +45,8 @@ export default class StoryPoint extends React.Component {
       case 'text':
         tab = (
           <Text
+            title={title}
+            description={description}
             setTitle={this.props.setTitle}
             setDescription={this.props.setDescription}
           />
@@ -57,6 +60,7 @@ export default class StoryPoint extends React.Component {
         <div className="row row--autofill">
           <div className="col" onClick={() => this.goToTab('data')}>Data</div>
           <div className="col" onClick={() => this.goToTab('dimensions')}>Dimensions</div>
+          <div className="col" onClick={() => this.goToTab('text')}>Text</div>
         </div>
         {tab}
       </div>

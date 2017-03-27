@@ -15,8 +15,8 @@ const mapDispatchToProps = dispatch => {
     setData: (storyPointIndex, data, columns) => dispatch(setData(storyPointIndex, data, columns)),
     setDimension: (storyPointIndex, dimension, column) => dispatch(setDimension(storyPointIndex, dimension, column)),
     setDataKey: dataKey => dispatch(setDataKey(dataKey)),
-    setStoryPointTitle: (storyPointIndex, title) => dispatch(setStoryPointTitle(storyPointIndex, title)),
-    setStoryPointDesc: (storyPointIndex, description) => dispatch(setStoryPointDesc(storyPointIndex, description)),
+    setTitle: (storyPointIndex, title) => dispatch(setStoryPointTitle(storyPointIndex, title)),
+    setDescription: (storyPointIndex, description) => dispatch(setStoryPointDesc(storyPointIndex, description)),
     addStoryPoint: storyPoint => dispatch(addStoryPoint(storyPoint)),
     removeStoryPoint: storyPointIndex => dispatch(removeStoryPoint(storyPointIndex))
   };

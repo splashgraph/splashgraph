@@ -185,6 +185,11 @@ class ScatterPlot {
   }
 }
 
+ScatterPlot.info = {
+  name: 'ScatterPlot',
+  title: 'Scatter Plot',
+  description: 'Lorem ipsum dolor sit amet consecetur dorem aelit.'
+};
 ScatterPlot.dimensionTypes = DIMENSION_TYPES;
 ScatterPlot.optionTypes = OPTION_TYPES;
 ScatterPlot.defaultOptions = DEFAULT_OPTIONS;

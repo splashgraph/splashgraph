@@ -27,6 +27,8 @@ router.route('/:storyId')
     Story.findById(req.params.storyId, (err, story) => {
       if (err)
         res.send(err);
+      if (!story)
+        res.send(404);
       res.send(story);
     });
   });

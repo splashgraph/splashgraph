@@ -1,5 +1,19 @@
 import * as actionTypes from './actionTypes';
 
+export function createStory(story) {
+  return {
+    types: [actionTypes.CREATE_REQUEST, actionTypes.CREATE_SUCCESS, actionTypes.CREATE_FAILURE],
+    promise: client => client.post('/stories', story)
+  };
+}
+
+export function setTemplate(templateName) {
+  return {
+    type: actionTypes.SET_TEMPLATE,
+    templateName
+  };
+}
+
 export function setData(storyPointIndex, data, columns) {
   return {
     type: actionTypes.SET_DATA,
