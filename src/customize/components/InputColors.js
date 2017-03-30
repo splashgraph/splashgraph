@@ -17,14 +17,16 @@ export default class InputColors extends React.Component {
     const colors = this.props.value.slice(0, uniqueColors.length).map((color, index) => {
       const setColor = event => this.setColor(index, event.target.value);
       return (
-        <li key={index}>
-          {uniqueColors[index][colorDimension]}<input style={{backgroundColor: color}} type="text" value={color} onChange={setColor}/>
+        <li className="list__item" key={index}>
+          <input className="form-group__input form-group__input--inline" type="text" value={color} onChange={setColor}/>
+          <span className="label" style={{backgroundColor: color}}>{uniqueColors[index][colorDimension]}</span>
         </li>
       );
     });
     return (
       <div>
-        <ul>
+        <label className="form-group__label">{this.props.option.label}</label>
+        <ul className="list list--scrollable">
           {colors}
         </ul>
       </div>
