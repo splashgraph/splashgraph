@@ -17,12 +17,20 @@ class ScatterPlot {
     this.yAxis = this.svg.append('g')
       .attr('class', 'yAxis')
       .attr('transform', `translate(${this.margin}, 0)`);
+
+    this.tooltip = d3.select(svg.parentNode)
+      .append('div')
+      .attr('class', 'tooltip')
+      .style('opacity', 0)
+      .style('position', 'absolute')
+      .style('pointer-events', 'none');
+
+    this.colorScale = d3.scaleOrdinal(d3.schemeCategory20);
   }
 
   draw(data, dimensions, options) {
     data = mapData(data, dimensions, ScatterPlot.dimensionTypes, options.dataKey);
     options = Object.assign({}, ScatterPlot.defaultOptions, options);
-
     if (hasDimensions(dimensions, ScatterPlot.dimensionTypes)) {
       const getX = d => d.x;
       const getY = d => d.y;
@@ -51,16 +59,19 @@ class ScatterPlot {
         .domain([rMin, rMax])
         .range([10, 20]);
 
-      const colorScale = d3.scaleOrdinal()
-        .range(options.colors);
+      if (options.xAxis) {
+        this.xAxis.transition()
+          .duration(options.transitionDuration)
+          .call(d3.axisBottom(xScale));
+      } else {
+        this.xAxis.selectAll('*').remove();
+      }
 
-      this.xAxis.transition()
-        .duration(options.transitionDuration)
-        .call(d3.axisBottom(xScale));
-
-      this.yAxis.transition()
-        .duration(options.transitionDuration)
-        .call(d3.axisLeft(yScale));
+      if (options.yAxis) {
+        this.yAxis.transition()
+          .duration(options.transitionDuration)
+          .call(d3.axisLeft(yScale));
+      }
 
       const circles = this.g.selectAll('.circle')
         .data(data, d => {
@@ -97,10 +108,29 @@ class ScatterPlot {
         .attr('r', 0);
 
       enter.merge(circles)
-        .attr('fill', d => {
+        .style('fill', d => {
           return dimensions.color ?
-            colorScale(getColor(d)) :
+            this.colorScale(getColor(d)) :
             options.colors[0];
+        })
+        .style('fill-opacity', 0.75)
+        .on('mouseover', d => {
+          if (options.tooltip && options.tooltip.length > 0) {
+            const tooltip = options.tooltip.map(tooltip => {
+              return `<span>${tooltip.label}: ${d[tooltip.field]}</span><br/>`;
+            });
+            this.tooltip.transition()
+              .style('opacity', 1);
+            this.tooltip.style('left', `${d3.event.pageX}px`)
+              .style('top', `${d3.event.pageY}px`)
+              .html(`<strong>${d.id}</strong><br/>${tooltip}`);
+          }
+        })
+        .on('mouseleave', () => {
+          if (options.tooltip && options.tooltip.length > 0) {
+            this.tooltip.transition()
+              .style('opacity', 0);
+          }
         })
         .transition()
         .duration(options.transitionDuration)
@@ -117,13 +147,6 @@ class ScatterPlot {
         .attr('r', d => {
           return rScale(getR(d));
         });
-
-      if (dimensions.label) {
-        enter.append('text')
-          .attr('font-size', 10)
-          .style('fill', '#000')
-          .text(d => getLabel(d));
-      }
     }
   }
 }
@@ -146,10 +169,6 @@ ScatterPlot.dimensionTypes = [{
   label: 'Radius',
   type: 'number'
 }, {
-  field: 'label',
-  label: 'Label',
-  optional: true
-}, {
   field: 'color',
   label: 'Color',
   optional: true
@@ -166,11 +185,26 @@ ScatterPlot.optionTypes = [{
   name: 'origin',
   label: 'Set origin (0,0)',
   type: 'checkbox'
+}, {
+  name: 'xAxis',
+  label: 'Display X axis',
+  type: 'checkbox'
+}, {
+  name: 'yAxis',
+  label: 'Display Y axis',
+  type: 'checkbox'
+}, {
+  name: 'tooltip',
+  label: 'Tooltip',
+  type: 'list'
 }];
 ScatterPlot.defaultOptions = {
-  colors: ['#ceb992', '#73937e', '#585563', '#5b2e48', '#471323', '#6a0136', '#bfab25', '#b81365', '#026c7c', '#055864'],
+  colors: d3.schemeCategory20,
   transitionDuration: 1000,
-  origin: false
+  origin: false,
+  xAxis: true,
+  yAxis: true,
+  tooltip: []
 };
 
 export default ScatterPlot;
