@@ -158,11 +158,11 @@ ScatterPlot.info = {
 };
 ScatterPlot.dimensionTypes = [{
   field: 'x',
-  label: 'X',
+  label: 'X Axis',
   type: 'number'
 }, {
   field: 'y',
-  label: 'Y',
+  label: 'Y Axis',
   type: 'number'
 }, {
   field: 'r',

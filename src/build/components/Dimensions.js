@@ -11,16 +11,25 @@ export default class Dimensions extends React.Component {
     });
     const dimensions = Template.dimensionTypes.map((dimension, index) => {
       return (
-        <div key={index}>
-          {dimension.label}
-          <select value={this.props.dimensions[dimension.field]} onChange={event => this.props.setDimension(event.target.value, dimension)}>
+        <div key={index} className="form-group col col--6">
+          <label className="form-group__label">
+            {dimension.label}<span className="u--text-danger">{!dimension.optional && '*'}</span>:
+          </label>
+          <select
+            className="form-group__input"
+            value={this.props.dimensions[dimension.field]}
+            onChange={event => this.props.setDimension(event.target.value, dimension)}
+          >
             {columns}
           </select>
+          <div className="form-group__help">
+            {dimension.description}
+          </div>
         </div>
-      )
+      );
     });
     return (
-      <div>
+      <div className="row">
         {dimensions}
       </div>
     );
