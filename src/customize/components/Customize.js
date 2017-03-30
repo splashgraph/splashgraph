@@ -74,7 +74,6 @@ export default class Customize extends React.Component {
       }
       return (
         <div key={index}>
-          <h5 className="form-group__label">{option.label}</h5>
           {input}
         </div>
       );
@@ -82,11 +81,11 @@ export default class Customize extends React.Component {
     return (
       <div className="container">
         <h2 classsName="form-group__label">2. Customize</h2>
-        <div className="row  border">
-          <div className="col col--5">
+        <div className="row">
+          <div className="col col--3">
             {optionInputs}
           </div>
-          <div className="col col--7">
+          <div className="col col--7 col--offset-2">
             <Story story={this.props.story}/>
           </div>
         </div>

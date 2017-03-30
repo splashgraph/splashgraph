@@ -26,8 +26,18 @@
   }
 }
 
-.form-group__input--textarea{
+.form-group__checkbox{
+  display: inline-block;
+  margin-right: 10px;
+}
 
+.form-group__input--inline{
+  display: inline-block;
+  width: auto;
+}
+
+.form-group__label--inline {
+  display: inline-block;
 }
 
 .form-group__help {
