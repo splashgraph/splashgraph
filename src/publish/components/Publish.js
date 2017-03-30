@@ -25,7 +25,7 @@ export default class Publish extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <h2>3. Publish</h2>
         <div className="row">
           <div className="col col--5">
