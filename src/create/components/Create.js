@@ -10,7 +10,7 @@ export default class CreateView extends React.Component {
           <li><Link to="/create/customize">2. Customize</Link></li>
           <li><Link to="/create/publish">3. Publish</Link></li>
         </ul>
-        <div>
+        <div className="container">
           {this.props.children}
         </div>
       </div>

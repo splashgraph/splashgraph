@@ -3,11 +3,13 @@
   border: 0;
   border-radius: $border-radius;
   font-family: 'Brandon Grotesque', sans-serif;
-  color: white;
+  color: $font-color-heading;
+  background-color: #fff;
   outline: none;
 }
 
 .button--primary{
+  color: #fff;
   background-color: $color-primary;
   &:hover{
     background-color: $color-primary-light;
@@ -15,6 +17,7 @@
 }
 
 .button--secondary{
+  color: #fff;
   background-color: $color-secondary;
   &:hover{
     background-color: $color-secondary-light;
@@ -22,8 +25,18 @@
 }
 
 .button--tertiary{
+  color: #fff;
   background-color: $color-tertiary-darker;
   &:hover{
     background-color: $color-tertiary;
+  }
+}
+
+.button--border {
+  background-color: transparent;
+  border: 2px solid #fff;
+  &:hover {
+    background-color: #fff;
+    color: $font-color-heading;
   }
 }

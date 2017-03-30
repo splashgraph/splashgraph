@@ -8,7 +8,7 @@ export default class Completion extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <h1>High five! Your freshly baked story has arrived.</h1>
         You can visit it using the link below:<br/>
         <a href={this.getLink()}>{this.getLink()}</a>
