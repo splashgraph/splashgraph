@@ -15,7 +15,7 @@ export default class App extends React.Component {
             </Link>
           </div>
         </div>
-        <div className="container">
+        <div>
           {this.props.children}
         </div>
       </div>
