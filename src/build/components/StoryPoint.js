@@ -4,11 +4,17 @@ import Data from './Data';
 import Dimensions from './Dimensions';
 import Text from './Text';
 
+const tabNames = {
+  data: 'Data',
+  dimensions: 'Dimensions',
+  text: 'Text'
+};
+
 export default class StoryPoint extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'data',
+      currentTab: tabNames.data,
     };
     this.goToTab = this.goToTab.bind(this);
   }
@@ -23,7 +29,7 @@ export default class StoryPoint extends React.Component {
     const {data, columns, dimensions, title, description} = this.props.storyPoint;
     let tab;
     switch (this.state.currentTab) {
-      case 'data':
+      case tabNames.data:
         tab = (
           <Data
             data={data}
@@ -32,7 +38,7 @@ export default class StoryPoint extends React.Component {
           />
         );
         break;
-      case 'dimensions':
+      case tabNames.dimensions:
         tab = (
           <Dimensions
             data={data}
@@ -43,7 +49,7 @@ export default class StoryPoint extends React.Component {
           />
         );
         break;
-      case 'text':
+      case tabNames.text:
         tab = (
           <Text
             title={title}
@@ -56,14 +62,23 @@ export default class StoryPoint extends React.Component {
       default:
         break;
     }
-    return (
-      <div>
-        <div className="row row--autofill">
-          <div className="col" onClick={() => this.goToTab('data')}>Data</div>
-          <div className="col" onClick={() => this.goToTab('dimensions')}>Dimensions</div>
-          <div className="col" onClick={() => this.goToTab('text')}>Text</div>
+    const tabs = [tabNames.data, tabNames.dimensions, tabNames.text].map((tab, index) => {
+      return (
+        <div
+          className={`tab__item ${this.state.currentTab === tab ? 'tab__item--active' : ''}`}
+          onClick={() => this.goToTab(tab)}>
+          {tab}
         </div>
-        {tab}
+      );
+    });
+    return (
+      <div className="tab">
+        <div className="tab__nav">
+          {tabs}
+        </div>
+        <div className="tab__content">
+          {tab}
+        </div>
       </div>
     );
   }
