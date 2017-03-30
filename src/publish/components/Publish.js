@@ -30,7 +30,7 @@ export default class Publish extends React.Component {
           <div className="col col--5">
             <div className="form-group">
               <label className="form-group__label">Title:</label>
-              <input className="form-group__input" ype="text" value={this.props.story.title} onChange={event => this.props.setTitle(event.target.value)}/>
+              <input className="form-group__input" type="text" value={this.props.story.title} onChange={event => this.props.setTitle(event.target.value)}/>
             </div>
             <div className="form-group">
               <label className="form-group__label">Description:</label>
