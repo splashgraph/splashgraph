@@ -1,5 +1,5 @@
 .draggable{
-  background-color: $color-tertiary-3;
+  background-color: $color-tertiary;
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(#000, 0.15);
   color: #fff;
@@ -13,7 +13,7 @@
 }
 
 .draggable--placeholder{
-  background-color: $color-grey-4;
+  background-color: $color-grey-lighter;
   box-shadow: inset 2px 2px 2px rgba(#000, 0.15);
-  color: $color-grey-2;
+  color: $font-color;
 }

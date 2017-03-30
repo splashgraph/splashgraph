@@ -8,22 +8,22 @@
 }
 
 .button--primary{
-  background-color: $color-primary-0;
+  background-color: $color-primary;
   &:hover{
-    background-color: $color-primary-3;
+    background-color: $color-primary-light;
   }
 }
 
 .button--secondary{
-  background-color: $color-secondary-0;
+  background-color: $color-secondary;
   &:hover{
-    background-color: $color-secondary-3;
+    background-color: $color-secondary-light;
   }
 }
 
 .button--tertiary{
-  background-color: $color-tertiary-0;
+  background-color: $color-tertiary-darker;
   &:hover{
-    background-color: $color-tertiary-3;
+    background-color: $color-tertiary;
   }
 }

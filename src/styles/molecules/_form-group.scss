@@ -13,13 +13,13 @@
   display: block;
   padding: 5px;
   border: 0;
-  border-bottom: 2px solid $color-grey-2;
+  border-bottom: 2px solid $border-color;
   outline: none;
-  background-color: #f8f8f8;
+  background-color: $color-grey-lighter;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   &:focus{
-    border-bottom: 2px solid $color-primary-3;
+    border-bottom: 2px solid $color-primary-light;
   }
 }
 
