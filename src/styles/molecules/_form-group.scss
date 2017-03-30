@@ -5,6 +5,9 @@
 .form-group__label{
   display: block;
   font-size: $font-size;
+  font-weight: 600;
+  color: $font-color-heading;
+  margin-bottom: 5px;
 }
 
 .form-group__input{
