@@ -6,6 +6,7 @@ import graphs from '../../graphs';
 import InputCheckBox from './InputCheckbox';
 import InputNumber from './InputNumber';
 import InputColors from './InputColors';
+import InputList from './InputList';
 
 const {Story} = story.components;
 
@@ -32,26 +33,44 @@ export default class Customize extends React.Component {
       let input;
       switch (option.type) {
         case 'number':
-          input = <InputNumber
-            option={option}
-            value={options[option.name]}
-            setOption={this.props.setOption}/>;
+          input = (
+            <InputNumber
+              option={option}
+              value={options[option.name]}
+              setOption={this.props.setOption}
+            />
+          );
           break;
         case 'checkbox':
-          input = <InputCheckBox
-            option={option}
-            value={options[option.name]}
-            setOption={this.props.setOption}/>;
+          input = (
+            <InputCheckBox
+              option={option}
+              value={options[option.name]}
+              setOption={this.props.setOption}
+            />
+          );
           break;
         case 'colors': {
-          input = <InputColors
-            option={option}
-            value={options[option.name]}
-            storyPoints={this.props.story.storyPoints}
-            dataKey={this.props.story.options.dataKey}
-            setOption={this.props.setOption}/>;
+          input = (
+            <InputColors
+              option={option}
+              value={options[option.name]}
+              storyPoints={this.props.story.storyPoints}
+              dataKey={this.props.story.options.dataKey}
+              setOption={this.props.setOption}
+            />
+          );
           break;
         }
+        case 'list':
+          input = (
+            <InputList
+              option={option}
+              value={options[option.name]}
+              setOption={this.props.setOption}
+            />
+          );
+          break;
       }
       return (
         <div key={index}>

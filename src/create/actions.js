@@ -7,9 +7,9 @@ export function createStory(story) {
   };
 }
 
-export function setTemplate(templateName) {
+export function setupStory(templateName) {
   return {
-    type: actionTypes.SET_TEMPLATE,
+    type: actionTypes.SETUP_STORY,
     templateName
   };
 }

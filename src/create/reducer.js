@@ -1,21 +1,18 @@
 import * as actionTypes from './actionTypes';
 
-const initialState = {
-  story: {
-    options: {},
-    storyPoints: [{
-      data: [],
-      dimensions: {}
-    }]
-  }
-};
+const initialState = {};
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.SET_TEMPLATE: {
-      const newStory = Object.assign({}, state.story, {
-        templateName: action.templateName
-      });
+    case actionTypes.SETUP_STORY: {
+      const newStory = {
+        templateName: action.templateName,
+        options: {},
+        storyPoints: [{
+          data: [],
+          dimensions: {}
+        }]
+      };
       return Object.assign({}, state, {
         story: newStory
       });

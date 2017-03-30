@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import create from '../../create';
-const {setTemplate} = create.actions;
+const {setupStory} = create.actions;
 import Templates from './Templates';
 
 const mapStateToProps = () => {
@@ -10,7 +10,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setTemplate: templateName => dispatch(setTemplate(templateName))
+    setupStory: templateName => dispatch(setupStory(templateName))
   };
 };
 

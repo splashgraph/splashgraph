@@ -2,7 +2,7 @@ export const CREATE_REQUEST = 'publish/CREATE_REQUEST';
 export const CREATE_SUCCESS = 'publish/CREATE_SUCCESS';
 export const CREATE_FAILURE = 'publish/CREATE_FAILURE';
 
-export const SET_TEMPLATE = 'create/SET_TEMPLATE';
+export const SETUP_STORY = 'create/SETUP_STORY';
 export const SET_DATA_KEY = 'create/SET_DATA_KEY';
 export const SET_OPTION = 'create/SET_OPTION';
 export const SET_TITLE = 'create/SET_TITLE';
