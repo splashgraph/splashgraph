@@ -1,0 +1,31 @@
+.u--text-danger {
+  color: $color-danger;
+}
+.u--text-right{
+  text-align: right;
+}
+
+.u--bg-dark {
+  background-color: $color-grey-dark;
+}
+
+.u--bg-lighter {
+  background-color: $color-grey-lighter;
+}
+
+.u--border-top {
+  border-top: 1px solid $border-color;
+}
+
+.u--border-bottom {
+  border-bottom: 1px solid $border-color;
+}
+
+.u--border-right {
+  border-right: 1px solid $border-color;
+}
+
+.col--full-width {
+  padding-left: 0;
+  padding-right: 0;
+}

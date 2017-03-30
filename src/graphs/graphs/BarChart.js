@@ -108,7 +108,7 @@ class BarChart {
 BarChart.info = {
   name: 'BarChart',
   title: 'Bar Chart',
-  description: 'Lorem ipsum dolor sit amet consecetur dorem aelit.'
+  description: ''
 };
 BarChart.dimensionTypes = [{
   field: 'x',
@@ -143,7 +143,9 @@ BarChart.optionTypes = [{
 }];
 BarChart.defaultOptions = {
   colors: d3.schemeCategory20,
-  grid: true
+  grid: true,
+  xAxis: true,
+  yAxis: true
 };
 
 export default BarChart;

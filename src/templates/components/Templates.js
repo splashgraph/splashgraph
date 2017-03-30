@@ -11,22 +11,31 @@ export default class Templates extends React.Component {
   }
 
   render() {
-    const templates = map(graphs.graphs, graph => {
+    const templates = map(graphs.graphs, (graph, index) => {
       return (
-        <div className="col col--4" key={graph.info.name}>
-          <h4>{graph.info.name}</h4>
-          <p>{graph.info.description}</p>
-          <button onClick={() => this.pickTemplate(graph)}>Pick Template</button>
+        <div className="col col--sm-3" key={index}>
+          <div className="card">
+            <div className="card__header">
+              <h3>{graph.info.title}</h3>
+            </div>
+            <div className="card__footer">
+              <button className="button button--primary" onClick={() => this.pickTemplate(graph)}>Pick</button>
+            </div>
+          </div>
         </div>
       );
     });
     return (
-      <div className="container">
-        <h1>Pick a template</h1>
-        <div className="row">
-          {templates}
+      <div>
+        <div className="banner">
+          <h1 className="banner__title">Pick a template</h1>
+        </div>
+        <div className="container">
+          <div className="row row--center section">
+            {templates}
+          </div>
         </div>
       </div>
-    )
+    );
   }
 }

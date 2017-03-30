@@ -1,13 +1,31 @@
+
 @import "../../node_modules/sigrid/src/sigrid";
 
-body {
+@import 'variables';
+@import 'atoms/utilities';
+@import 'atoms/animation';
+@import 'atoms/typography';
+@import 'atoms/buttons';
+@import 'atoms/borders';
+@import 'atoms/links';
+@import 'atoms/draggable';
+@import 'atoms/pagination';
+@import 'atoms/list';
+@import 'atoms/labels';
+@import 'atoms/utilities';
+@import 'atoms/layouts';
+@import 'atoms/table';
+@import 'atoms/scrollable';
+@import 'molecules/cards';
+@import 'molecules/header';
+@import 'molecules/form-group';
+@import 'molecules/tabs';
+@import 'molecules/progressbar';
+@import 'molecules/modals';
+@import 'molecules/banners';
+@import 'molecules/dropzone';
+
+html, body{
+  padding: 0;
   margin: 0;
-}
-
-.container {
-  padding: 0 15px;
-}
-
-table {
-  width: 100%;
 }

@@ -1,0 +1,47 @@
+.button{
+  padding: 10px 20px;
+  border: 0;
+  border-radius: $border-radius;
+  font-family: 'Brandon Grotesque', sans-serif;
+  color: $font-color-heading;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.button--primary{
+  color: #fff;
+  background-color: $color-primary;
+  &:hover{
+    background-color: $color-primary-dark;
+  }
+}
+
+.button--secondary{
+  color: #fff;
+  background-color: $color-secondary;
+  &:hover{
+    background-color: $color-secondary-dark;
+  }
+}
+
+.button--tertiary{
+  color: #fff;
+  background-color: $color-tertiary;
+  &:hover{
+    background-color: $color-tertiary-dark;
+  }
+}
+
+.button--border {
+  background-color: transparent;
+  border: 2px solid #fff;
+  &:hover {
+    background-color: #fff;
+    color: $font-color-heading;
+  }
+}
+.button--sm {
+  padding: 5px 10px;
+  font-size: 13px;
+}

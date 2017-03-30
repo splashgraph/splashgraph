@@ -74,19 +74,19 @@ export default class Customize extends React.Component {
       }
       return (
         <div key={index}>
-          <h5>{option.label}</h5>
           {input}
         </div>
       );
     });
     return (
-      <div className="container">
-        <h2>2. Customize</h2>
+      <div>
         <div className="row">
-          <div className="col col--5">
-            {optionInputs}
+          <div className="col col--sm-5 col--md-4  u--border-right">
+            <div className="section">
+              {optionInputs}
+            </div>
           </div>
-          <div className="col col--7">
+          <div className="col col--sm-7 col--md-8 section">
             <Story story={this.props.story}/>
           </div>
         </div>

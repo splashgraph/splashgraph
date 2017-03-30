@@ -7,11 +7,15 @@ export default class Data extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {};
     this.handleFileChange = this.handleFileChange.bind(this);
   }
 
   handleFileChange(event) {
     const file = event.target.files[0];
+    this.setState({
+      fileName: file.name
+    });
     const reader = new FileReader();
     reader.readAsText(file);
     reader.onload = event => {
@@ -33,31 +37,48 @@ export default class Data extends React.Component {
   render() {
     return (
       <div>
-        <div className="row row--autofill">
-          <div className="col">
-            <input type="file" onChange={this.handleFileChange}/>
+        {this.props.data.length === 0 &&
+        <div className="dropzone">
+          <input className="dropzone__button" type="file" onChange={this.handleFileChange}/>
+          <div className="dropzone__decoy">
+            <div className="dropzone__decoy__text">Drop your files here</div>
+            <div className="dropzone__decoy__text dropzone__decoy__text--l">+</div>
+            <div className="dropzone__decoy__text">Supported formats: CSV</div>
           </div>
-          <div className="col">
-            <div style={{overflow: 'scroll'}}>
-              <table>
+        </div>
+        }
+        {this.props.data.length > 0 &&
+          <div>
+            <div className="file-input">
+              <strong>{this.state.fileName}</strong>
+              &nbsp;
+              &nbsp;
+              <input type="file" className="file-input__input" onChange={this.handleFileChange} id="file"/>
+              <label className="file-input__label button button--primary button--sm" htmlFor="file">Choose a file...</label>
+            </div>
+            <br/>
+            <div className="scrollable">
+              <table className="table">
                 <thead>
-                {map(this.props.columns, (header, index) =>
-                  <th key={index}>{header}</th>
-                )}
+                  <tr>
+                    {map(this.props.columns, (header, index) =>
+                      <th key={index}>{header}</th>
+                    )}
+                  </tr>
                 </thead>
                 <tbody>
-                  {map(this.props.data, (row, index) =>
-                    <tr key={index}>
-                      {map(row, (column, index) =>
-                        <td key={index}>{column}</td>
-                      )}
-                    </tr>
-                  )}
+                {map(this.props.data, (row, index) =>
+                  <tr key={index}>
+                    {map(row, (column, index) =>
+                      <td key={index}>{column}</td>
+                    )}
+                  </tr>
+                )}
                 </tbody>
               </table>
             </div>
           </div>
-        </div>
+        }
       </div>
     );
   }

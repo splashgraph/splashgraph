@@ -2,6 +2,7 @@ import React from 'react';
 
 import StoryPoint from './StoryPoint';
 import graphs from '../../graphs';
+import Modal from 'widgets/components/Modal';
 const {Graph} = graphs.components;
 
 export default class Builder extends React.Component {
@@ -14,7 +15,7 @@ export default class Builder extends React.Component {
     this.setDimension = this.setDimension.bind(this);
     this.setData = this.setData.bind(this);
     this.add = this.add.bind(this);
-    this.generateJSON = this.generateJSON.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   setDimension(column, dimension) {
@@ -24,8 +25,18 @@ export default class Builder extends React.Component {
   setData(data, columns) {
     this.props.setData(this.state.currentIndex, data, columns);
     if (!this.props.story.options.dataKey) {
-      this.props.setDataKey(prompt('Input data key:'));
+      this.props.setDataKey(columns[0]);
+      this.setState({
+        showModal: true
+      });
+      // this.props.setDataKey(prompt('Input data key:'));
     }
+  }
+
+  hideModal() {
+    this.setState({
+      showModal: false
+    });
   }
 
   setStoryPointDesc(description) {
@@ -48,10 +59,6 @@ export default class Builder extends React.Component {
     }
   }
 
-  generateJSON() {
-    console.log(JSON.stringify(this.state.story));
-  }
-
   goTo(index) {
     this.setState({
       currentIndex: index
@@ -64,20 +71,19 @@ export default class Builder extends React.Component {
 
   render() {
     const storyPoints = this.props.story.storyPoints.map((storyPoint, index) => {
-      const text = index === this.state.currentIndex ? <strong>{index}</strong> : index;
       return (
-        <li key={index}>
-          <a onClick={() => this.goTo(index)}>{text}</a>
-          <button onClick={() => this.remove(index)}>Remove</button>
-        </li>
+        <div className={`pagination__item ${index === this.state.currentIndex ? 'pagination__item--active' : ''}`} key={index} onClick={() => this.goTo(index)}>
+          Story point
+          <div className="pagination__number">{index + 1}</div>
+          {/* <button className="pagination__item--remove" onClick={() => this.remove(index)}>Remove</button> */}
+        </div>
       );
     });
 
     return (
-      <div className="container">
-        <h2>1. Build</h2>
-        <div className="row">
-          <div className="col col--5">
+      <div>
+        <div className="row u--border-bottom">
+          <div className="col col--sm-5 col--md-4 col--full-width u--border-right">
             <StoryPoint
               storyPoint={this.getCurrent()}
               templateName={this.props.story.templateName}
@@ -87,7 +93,7 @@ export default class Builder extends React.Component {
               setDescription={description => this.props.setDescription(this.state.currentIndex, description)}
             />
           </div>
-          <div className="col col--7">
+          <div className="col col--sm-7 col--md-8 section">
             <Graph
               storyPoint={this.getCurrent()}
               options={this.props.story.options}
@@ -95,13 +101,33 @@ export default class Builder extends React.Component {
             />
           </div>
         </div>
-        <div>
-          <ul>
-            {storyPoints}
-          </ul>
-          <button onClick={this.add}>Add</button>
+        <div className="pagination pagination--dark">
+          {storyPoints}
+          <div className="pagination__item pagination__item--add" onClick={this.add}>
+            Add
+            <div className="pagination__number">+</div>
+          </div>
         </div>
+        <Modal isActive={this.state.showModal}>
+          <div className="modal__header">
+            <h3>Set ID:</h3>
+          </div>
+          <div className="modal__body">
+            In order to be able to track your data between story points you need to select a unique identifier for every row.
+            <div className="form-group">
+              <label className="form-group__label">ID-column:</label>
+              <select className="form-group__input" value={this.props.story.options.dataKey} onChange={event => this.props.setDataKey(event.target.value)}>
+                {this.props.story.storyPoints[0].columns && this.props.story.storyPoints[0].columns.map(column =>
+                  <option key={column}>{column}</option>
+                )}
+              </select>
+            </div>
+          </div>
+          <div className="modal__footer">
+            <button className="button button--primary" onClick={this.hideModal}>Save</button>
+          </div>
+        </Modal>
       </div>
-    )
+    );
   }
 }

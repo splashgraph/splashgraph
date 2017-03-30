@@ -154,15 +154,16 @@ class ScatterPlot {
 ScatterPlot.info = {
   name: 'ScatterPlot',
   title: 'Scatter Plot',
+  subtitle: 'Dispersion',
   description: 'Lorem ipsum dolor sit amet consecetur dorem aelit.'
 };
 ScatterPlot.dimensionTypes = [{
   field: 'x',
-  label: 'X',
+  label: 'X Axis',
   type: 'number'
 }, {
   field: 'y',
-  label: 'Y',
+  label: 'Y Axis',
   type: 'number'
 }, {
   field: 'r',
@@ -175,7 +176,7 @@ ScatterPlot.dimensionTypes = [{
 }];
 ScatterPlot.optionTypes = [{
   name: 'colors',
-  label: 'colors',
+  label: 'Colors',
   type: 'colors',
 }, {
   name: 'transitionDuration',
@@ -193,10 +194,6 @@ ScatterPlot.optionTypes = [{
   name: 'yAxis',
   label: 'Display Y axis',
   type: 'checkbox'
-}, {
-  name: 'tooltip',
-  label: 'Tooltip',
-  type: 'list'
 }];
 ScatterPlot.defaultOptions = {
   colors: d3.schemeCategory20,

@@ -1,0 +1,23 @@
+.banner {
+  background-color: $color-primary;
+  color: rgba(#000, 0.5);
+  padding: 50px;
+  text-align: center;
+}
+
+.banner--lg {
+  padding: 100px;
+}
+
+.banner--xl {
+  padding: 150px;
+}
+
+.banner__title {
+  color: #fff;
+  font-size: 48px;
+}
+
+.banner__lead {
+
+}

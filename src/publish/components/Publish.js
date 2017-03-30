@@ -25,20 +25,21 @@ export default class Publish extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h2>3. Publish</h2>
-        <div className="row">
-          <div className="col col--5">
-            <h5>Title</h5>
-            <input type="text" value={this.props.story.title} onChange={event => this.props.setTitle(event.target.value)}/>
-            <h5>Description</h5>
-            <textarea value={this.props.story.description} onChange={event => this.props.setDescription(event.target.value)}/>
-            <br/>
-            <button onClick={this.publish}>Publish</button>
+      <div className="row">
+        <div className="col col--sm-5 col--md-4 u--border-right section">
+          <div className="form-group">
+            <label className="form-group__label">Title:</label>
+            <input className="form-group__input" type="text" value={this.props.story.title} onChange={event => this.props.setTitle(event.target.value)}/>
           </div>
-          <div className="col col--7">
-            <Story story={this.props.story}/>
+          <div className="form-group">
+            <label className="form-group__label">Description:</label>
+            <textarea className="form-group__input form-group__input--textarea" value={this.props.story.description} onChange={event => this.props.setDescription(event.target.value)}/>
+          <br/>
           </div>
+          <button className="button button--primary" onClick={this.publish}>Publish</button>
+        </div>
+        <div className="col col--sm-7 col--md-8 section">
+          <Story story={this.props.story}/>
         </div>
       </div>
     );
