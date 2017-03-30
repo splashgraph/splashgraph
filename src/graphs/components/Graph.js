@@ -18,9 +18,11 @@ class Graph extends React.Component {
     return (
       <div>
         <svg ref={svg => this.svg = svg}/>
-        <div>
-          <h4>{this.props.storyPoint.title}</h4>
-          {this.props.storyPoint.description}
+        <div className="row">
+          <div className="col col--md-7">
+            <h4>{this.props.storyPoint.title}</h4>
+            {this.props.storyPoint.description}
+          </div>
         </div>
       </div>
     );

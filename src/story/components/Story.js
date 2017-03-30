@@ -23,18 +23,25 @@ export default class Story extends React.Component {
 
   render() {
     const storyPoints = this.props.story.storyPoints.map((storyPoint, index) => {
-      return <li key={index} onClick={() => this.goTo(index)}>{index}</li>;
+      return (
+        <div
+          className={`pagination__item ${index === this.state.currentIndex ? 'pagination__item--active' : ''}`}
+          key={index} onClick={() => this.goTo(index)}
+        >
+          {index + 1}
+        </div>
+      );
     });
     return (
       <div>
+        <div className="pagination">
+          {storyPoints}
+        </div>
         <Graph
           storyPoint={this.getCurrent()}
           options={this.props.story.options}
           templateName={this.props.story.templateName}
         />
-        <ul>
-          {storyPoints}
-        </ul>
       </div>
     );
   }
