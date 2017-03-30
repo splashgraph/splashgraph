@@ -33,37 +33,33 @@ export default class Data extends React.Component {
   render() {
     return (
       <div>
-        <div className="row row--autofill">
-          {this.props.data.length === 0 && 
-          <div className="dropzone">
-            <input className="dropzone__button" type="file" onChange={this.handleFileChange}/>
-            <div className="dropzone__decoy">
-              <div className="dropzone__decoy__text">Drop your files here</div>
-              <div className="dropzone__decoy__text dropzone__decoy__text--l">+</div>
-              <div className="dropzone__decoy__text">Supported formats: CSV</div>
-            </div>
+        {this.props.data.length === 0 &&
+        <div className="dropzone">
+          <input className="dropzone__button" type="file" onChange={this.handleFileChange}/>
+          <div className="dropzone__decoy">
+            <div className="dropzone__decoy__text">Drop your files here</div>
+            <div className="dropzone__decoy__text dropzone__decoy__text--l">+</div>
+            <div className="dropzone__decoy__text">Supported formats: CSV</div>
           </div>
-          }
-          <div className="col">
-            <div style={{overflow: 'scroll'}}>
-              <table>
-                <thead>
-                {map(this.props.columns, (header, index) =>
-                  <th key={index}>{header}</th>
-                )}
-                </thead>
-                <tbody>
-                  {map(this.props.data, (row, index) =>
-                    <tr key={index}>
-                      {map(row, (column, index) =>
-                        <td key={index}>{column}</td>
-                      )}
-                    </tr>
+        </div>
+        }
+        <div className="scrollable">
+          <table className="table">
+            <thead>
+            {map(this.props.columns, (header, index) =>
+              <th className="table__head" key={index}>{header}</th>
+            )}
+            </thead>
+            <tbody>
+              {map(this.props.data, (row, index) =>
+                <tr key={index}>
+                  {map(row, (column, index) =>
+                    <td className="table__cells" key={index}>{column}</td>
                   )}
-                </tbody>
-              </table>
-            </div>
-          </div>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     );

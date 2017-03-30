@@ -67,7 +67,7 @@ export default class StoryPoint extends React.Component {
         <div
           className={`tab__item ${this.state.currentTab === tab ? 'tab__item--active' : ''}`}
           onClick={() => this.goToTab(tab)}>
-          <a className="link">{tab}</a>
+          {tab}
         </div>
       );
     });
