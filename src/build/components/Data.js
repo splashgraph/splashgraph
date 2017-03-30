@@ -7,11 +7,15 @@ export default class Data extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {};
     this.handleFileChange = this.handleFileChange.bind(this);
   }
 
   handleFileChange(event) {
     const file = event.target.files[0];
+    this.setState({
+      fileName: file.name
+    });
     const reader = new FileReader();
     reader.readAsText(file);
     reader.onload = event => {
@@ -43,24 +47,38 @@ export default class Data extends React.Component {
           </div>
         </div>
         }
-        <div className="scrollable">
-          <table className="table">
-            <thead>
-            {map(this.props.columns, (header, index) =>
-              <th className="table__head" key={index}>{header}</th>
-            )}
-            </thead>
-            <tbody>
-              {map(this.props.data, (row, index) =>
-                <tr key={index}>
-                  {map(row, (column, index) =>
-                    <td className="table__cells" key={index}>{column}</td>
-                  )}
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+        {this.props.data.length > 0 &&
+          <div>
+            <div className="file-input">
+              <strong>{this.state.fileName}</strong>
+              &nbsp;
+              &nbsp;
+              <input type="file" className="file-input__input" onChange={this.handleFileChange} id="file"/>
+              <label className="file-input__label button button--primary button--sm" htmlFor="file">Choose a file...</label>
+            </div>
+            <br/>
+            <div className="scrollable">
+              <table className="table">
+                <thead>
+                  <tr>
+                    {map(this.props.columns, (header, index) =>
+                      <th key={index}>{header}</th>
+                    )}
+                  </tr>
+                </thead>
+                <tbody>
+                {map(this.props.data, (row, index) =>
+                  <tr key={index}>
+                    {map(row, (column, index) =>
+                      <td key={index}>{column}</td>
+                    )}
+                  </tr>
+                )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        }
       </div>
     );
   }

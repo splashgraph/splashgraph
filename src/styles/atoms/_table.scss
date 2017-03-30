@@ -1,22 +1,19 @@
 .table {
-  border: 1px solid $color-grey-light;
+  border: 0;
   border-collapse: collapse;
   text-align: left;
   width: 100%;
   tr {
+    th {
+      white-space: nowrap;
+      border-bottom: 1px solid $border-color;
+    }
+    th,
     td {
-      border: 0;
+      padding: 5px;
     }
     &:nth-child(2n){
       background-color: $color-grey-lighter;
     }
   }
-}
-.table__head {
-  padding: 5px;
-  font-size: $font-size-l;
-}
-.table__cells {
-  padding: 5px;
-  font-size: $font-size-m;
 }

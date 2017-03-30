@@ -1,20 +1,21 @@
 .pagination {
   display: flex;
-  margin-top: 0;
+  margin-top: 20px;
 }
 
 .pagination__item{
+  flex: 0 0 auto;
   text-align: center;
   list-style: none;
   width: 100px;
   padding: 5px 0;
   border-radius: 10px;
   outline: none;
-  font-size: $font-size;
+  font-size: 13px;
   color: $font-color;
   background-color: transparent;
   border: 1px solid $border-color;
-  margin: 0 25px;
+  margin: 0 10px;
   cursor: pointer;
   &:hover{
     background: $color-grey-lighter;

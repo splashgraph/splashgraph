@@ -1,25 +1,38 @@
 import React from 'react';
 import {Link} from 'react-router';
+import findIndex from 'lodash/findIndex';
+
+
+const paths = [{
+  path: '/create/build',
+  label: 'Build'
+}, {
+  path: '/create/customize',
+  label: 'Customize'
+}, {
+  path: '/create/publish',
+  label: 'Publish'
+}];
 
 export default class CreateView extends React.Component {
   render() {
+    const progressSections = paths.map((path, index) => {
+      const isDone = index <= findIndex(paths, {path: this.props.location.pathname});
+      return (
+        <Link key={index} to={path.path} className={`progress__section ${isDone ? '' : 'progress__section--undone'}`}>
+          <div className="progress__dot">{index + 1}</div>
+          <div className="progress__title">{path.label}</div>
+        </Link>
+      );
+    });
     return (
       <div>
-        <div className="progress">
-          <Link to="/create/build" className="progress__section">
-            <div className="progress__dot">1</div>
-            <div className="progress__title">Build</div>
-          </Link>
-          <Link to="/create/customize" className="progress__section">
-            <div className="progress__dot">2</div>
-            <div className="progress__title">Customize</div>
-          </Link>
-          <Link to="/create/publish" className="progress__section">
-            <div className="progress__dot">3</div>
-            <div className="progress__title">Publish</div>
-          </Link>
+        <div className="section section--sm section--light">
+          <div className="progress">
+            {progressSections}
+          </div>
         </div>
-        <div>
+        <div className="container section">
           {this.props.children}
         </div>
       </div>

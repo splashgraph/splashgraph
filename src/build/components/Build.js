@@ -71,11 +71,10 @@ export default class Builder extends React.Component {
 
   render() {
     const storyPoints = this.props.story.storyPoints.map((storyPoint, index) => {
-      const text = index === this.state.currentIndex ? <strong>{index}</strong> : index;
       return (
-        <div className="pagination__item" key={index} onClick={() => this.goTo(index)}>
+        <div className={`pagination__item ${index === this.state.currentIndex ? 'pagination__item--active' : ''}`} key={index} onClick={() => this.goTo(index)}>
           Story point
-          <div className="pagination__number">{text}</div>
+          <div className="pagination__number">{index + 1}</div>
           {/* <button className="pagination__item--remove" onClick={() => this.remove(index)}>Remove</button> */}
         </div>
       );
@@ -83,7 +82,6 @@ export default class Builder extends React.Component {
 
     return (
       <div>
-        <h2>1. Build</h2>
         <div className="row">
           <div className="col col--5">
             <StoryPoint
@@ -103,7 +101,7 @@ export default class Builder extends React.Component {
             />
           </div>
         </div>
-        <div className="pagination">
+        <div className="pagination pagination--dark">
           {storyPoints}
           <div className="pagination__item pagination__item--add" onClick={this.add}>
             Add

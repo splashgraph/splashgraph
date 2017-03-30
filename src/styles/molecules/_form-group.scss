@@ -1,5 +1,5 @@
 .form-group{
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .form-group__label{
@@ -48,4 +48,15 @@
 .form-group__help {
   font-size: $font-size-sm;
   color: $color-grey-light;
+}
+
+.file-input {
+
+}
+
+.file-input__input {
+  display: none;
+}
+
+.file-input__label {
 }
