@@ -71,15 +71,27 @@ export default class StoryPoint extends React.Component {
         </div>
       );
     });
-    return (
-      <div className="tab">
-        <div className="tab__nav">
-          {tabs}
+    if (data.length > 0) {
+      return (
+        <div className="tab">
+          <div className="tab__nav">
+            {tabs}
+          </div>
+          <div className="tab__content">
+            {tab}
+          </div>
         </div>
-        <div className="tab__content">
-          {tab}
+      );
+    } else {
+      return (
+        <div className="col section">
+          <Data
+            data={data}
+            columns={columns}
+            setData={this.props.setData}
+          />
         </div>
-      </div>
-    );
+      );
+    }
   }
 }

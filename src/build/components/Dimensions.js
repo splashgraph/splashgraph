@@ -20,6 +20,7 @@ export default class Dimensions extends React.Component {
             value={this.props.dimensions[dimension.field]}
             onChange={event => this.props.setDimension(event.target.value, dimension)}
           >
+            <option value="">None</option>
             {columns}
           </select>
           <div className="form-group__help">

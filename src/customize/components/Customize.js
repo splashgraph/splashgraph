@@ -81,10 +81,12 @@ export default class Customize extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col col--3">
-            {optionInputs}
+          <div className="col col--sm-5 col--md-4  u--border-right">
+            <div className="section">
+              {optionInputs}
+            </div>
           </div>
-          <div className="col col--7 col--offset-2">
+          <div className="col col--sm-7 col--md-8 section">
             <Story story={this.props.story}/>
           </div>
         </div>

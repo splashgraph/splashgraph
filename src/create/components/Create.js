@@ -27,12 +27,12 @@ export default class CreateView extends React.Component {
     });
     return (
       <div>
-        <div className="section section--sm section--light">
+        <div className="section section--sm u--bg-dark">
           <div className="progress">
             {progressSections}
           </div>
         </div>
-        <div className="container section">
+        <div className="container">
           {this.props.children}
         </div>
       </div>

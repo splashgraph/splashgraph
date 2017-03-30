@@ -82,8 +82,8 @@ export default class Builder extends React.Component {
 
     return (
       <div>
-        <div className="row">
-          <div className="col col--5">
+        <div className="row u--border-bottom">
+          <div className="col col--sm-5 col--md-4 col--full-width u--border-right">
             <StoryPoint
               storyPoint={this.getCurrent()}
               templateName={this.props.story.templateName}
@@ -93,7 +93,7 @@ export default class Builder extends React.Component {
               setDescription={description => this.props.setDescription(this.state.currentIndex, description)}
             />
           </div>
-          <div className="col col--7">
+          <div className="col col--sm-7 col--md-8 section">
             <Graph
               storyPoint={this.getCurrent()}
               options={this.props.story.options}

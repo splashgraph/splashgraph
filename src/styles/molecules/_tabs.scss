@@ -13,9 +13,6 @@
   flex: 1;
   margin-bottom: -2px;
   padding: 7px 10px;
-  // background-color: transparent;
-  // border-top-right-radius: 10px;
-  font-size: $font-size-l;
   &:hover {
     cursor: pointer;
     color: $color-grey;
@@ -29,6 +26,6 @@
   }
 }
 .tab__content {
-  border: 2px solid $border-color;
+  border-top: 1px solid $border-color;
   padding: 30px;
 }

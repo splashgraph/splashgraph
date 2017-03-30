@@ -175,7 +175,7 @@ ScatterPlot.dimensionTypes = [{
 }];
 ScatterPlot.optionTypes = [{
   name: 'colors',
-  label: 'colors',
+  label: 'Colors',
   type: 'colors',
 }, {
   name: 'transitionDuration',
@@ -193,10 +193,6 @@ ScatterPlot.optionTypes = [{
   name: 'yAxis',
   label: 'Display Y axis',
   type: 'checkbox'
-}, {
-  name: 'tooltip',
-  label: 'Tooltip',
-  type: 'list'
 }];
 ScatterPlot.defaultOptions = {
   colors: d3.schemeCategory20,
