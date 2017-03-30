@@ -2,6 +2,7 @@
 @import "../../node_modules/sigrid/src/sigrid";
 
 @import 'variables';
+@import 'atoms/animation';
 @import 'atoms/typography';
 @import 'atoms/buttons';
 @import 'atoms/borders';
@@ -9,11 +10,13 @@
 @import 'atoms/draggable';
 @import 'atoms/pagination';
 @import 'atoms/list';
+
 @import 'molecules/cards';
 @import 'molecules/header';
 @import 'molecules/form-group';
 @import 'molecules/tabs';
 @import 'molecules/progressbar';
+@import 'molecules/modals';
 
 html, body{
   padding: 0;
