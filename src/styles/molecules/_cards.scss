@@ -1,0 +1,30 @@
+.card{
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px;
+}
+
+.card__image{
+  margin: 0 auto;
+  img{
+    width: 100%;
+  }
+}
+
+
+.card__header{
+
+}
+
+.card__body{
+  width: 99%;
+  margin: 0 auto;
+}
+
+.card__button{
+  padding: 10px;
+}
+
+.card__title{
+  text-align: center;
+}

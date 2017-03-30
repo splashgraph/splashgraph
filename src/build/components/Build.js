@@ -2,6 +2,7 @@ import React from 'react';
 
 import StoryPoint from './StoryPoint';
 import graphs from '../../graphs';
+import Modal from 'widgets/components/Modal';
 const {Graph} = graphs.components;
 
 export default class Builder extends React.Component {
@@ -14,7 +15,7 @@ export default class Builder extends React.Component {
     this.setDimension = this.setDimension.bind(this);
     this.setData = this.setData.bind(this);
     this.add = this.add.bind(this);
-    this.generateJSON = this.generateJSON.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   setDimension(column, dimension) {
@@ -24,8 +25,18 @@ export default class Builder extends React.Component {
   setData(data, columns) {
     this.props.setData(this.state.currentIndex, data, columns);
     if (!this.props.story.options.dataKey) {
-      this.props.setDataKey(prompt('Input data key:'));
+      this.props.setDataKey(columns[0]);
+      this.setState({
+        showModal: true
+      });
+      // this.props.setDataKey(prompt('Input data key:'));
     }
+  }
+
+  hideModal() {
+    this.setState({
+      showModal: false
+    });
   }
 
   setStoryPointDesc(description) {
@@ -46,10 +57,6 @@ export default class Builder extends React.Component {
     if (this.state.currentIndex > 0) {
       this.goTo(this.state.currentIndex - 1);
     }
-  }
-
-  generateJSON() {
-    console.log(JSON.stringify(this.state.story));
   }
 
   goTo(index) {
@@ -101,7 +108,26 @@ export default class Builder extends React.Component {
           </ul>
           <button onClick={this.add}>Add</button>
         </div>
+        <Modal isActive={this.state.showModal}>
+          <div className="modal__header">
+            <h3>Set ID:</h3>
+          </div>
+          <div className="modal__body">
+            In order to be able to track your data between story points you need to select a unique identifier for every row.
+            <div className="form-group">
+              <label className="form-group__label">ID-column:</label>
+              <select className="form-group__input" value={this.props.story.options.dataKey} onChange={event => this.props.setDataKey(event.target.value)}>
+                {this.props.story.storyPoints[0].columns && this.props.story.storyPoints[0].columns.map(column =>
+                  <option key={column}>{column}</option>
+                )}
+              </select>
+            </div>
+          </div>
+          <div className="modal__footer">
+            <button className="button button--primary" onClick={this.hideModal}>Save</button>
+          </div>
+        </Modal>
       </div>
-    )
+    );
   }
 }

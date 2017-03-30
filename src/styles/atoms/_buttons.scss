@@ -1,0 +1,29 @@
+.button{
+  padding: 10px 20px;
+  border: 0;
+  border-radius: $border-radius;
+  font-family: 'Brandon Grotesque', sans-serif;
+  color: white;
+  outline: none;
+}
+
+.button--primary{
+  background-color: $color-primary;
+  &:hover{
+    background-color: $color-primary-light;
+  }
+}
+
+.button--secondary{
+  background-color: $color-secondary;
+  &:hover{
+    background-color: $color-secondary-light;
+  }
+}
+
+.button--tertiary{
+  background-color: $color-tertiary-darker;
+  &:hover{
+    background-color: $color-tertiary;
+  }
+}
