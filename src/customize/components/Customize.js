@@ -79,7 +79,7 @@ export default class Customize extends React.Component {
       );
     });
     return (
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col col--3">
             {optionInputs}

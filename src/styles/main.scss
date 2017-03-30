@@ -13,12 +13,14 @@
 @import 'atoms/list';
 @import 'atoms/labels';
 @import 'atoms/utilities';
+@import 'atoms/layouts';
 @import 'molecules/cards';
 @import 'molecules/header';
 @import 'molecules/form-group';
 @import 'molecules/tabs';
 @import 'molecules/progressbar';
 @import 'molecules/modals';
+@import 'molecules/banners';
 
 html, body{
   padding: 0;

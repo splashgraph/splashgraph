@@ -81,7 +81,7 @@ export default class Builder extends React.Component {
     });
 
     return (
-      <div className="container">
+      <div>
         <h2>1. Build</h2>
         <div className="row">
           <div className="col col--5">
