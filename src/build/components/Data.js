@@ -34,9 +34,16 @@ export default class Data extends React.Component {
     return (
       <div>
         <div className="row row--autofill">
-          <div className="col">
-            <input type="file" onChange={this.handleFileChange}/>
+          {this.props.data.length === 0 && 
+          <div className="dropzone">
+            <input className="dropzone__button" type="file" onChange={this.handleFileChange}/>
+            <div className="dropzone__decoy">
+              <div className="dropzone__decoy__text">Drop your files here</div>
+              <div className="dropzone__decoy__text dropzone__decoy__text--l">+</div>
+              <div className="dropzone__decoy__text">Supported formats: CSV</div>
+            </div>
           </div>
+          }
           <div className="col">
             <div style={{overflow: 'scroll'}}>
               <table>

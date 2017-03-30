@@ -40,6 +40,11 @@
   display: inline-block;
 }
 
+.form-group__input--textarea{
+  resize: none;
+  height: 100px;
+}
+
 .form-group__help {
   font-size: $font-size-sm;
   color: $color-grey-light;

@@ -9,6 +9,7 @@
   position: relative;
   flex: 1;
   text-align: center;
+  text-decoration: none;
   &:before {
     content: '';
     border-bottom: 10px solid $color-secondary-light;

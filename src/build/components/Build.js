@@ -73,10 +73,11 @@ export default class Builder extends React.Component {
     const storyPoints = this.props.story.storyPoints.map((storyPoint, index) => {
       const text = index === this.state.currentIndex ? <strong>{index}</strong> : index;
       return (
-        <li key={index}>
-          <a onClick={() => this.goTo(index)}>{text}</a>
-          <button onClick={() => this.remove(index)}>Remove</button>
-        </li>
+        <div className="pagination__item" key={index} onClick={() => this.goTo(index)}>
+          Story point
+          <div className="pagination__number">{text}</div>
+          {/* <button className="pagination__item--remove" onClick={() => this.remove(index)}>Remove</button> */}
+        </div>
       );
     });
 
@@ -102,11 +103,12 @@ export default class Builder extends React.Component {
             />
           </div>
         </div>
-        <div>
-          <ul>
-            {storyPoints}
-          </ul>
-          <button onClick={this.add}>Add</button>
+        <div className="pagination">
+          {storyPoints}
+          <div className="pagination__item pagination__item--add" onClick={this.add}>
+            Add
+            <div className="pagination__number">+</div>
+          </div>
         </div>
         <Modal isActive={this.state.showModal}>
           <div className="modal__header">

@@ -1,8 +1,11 @@
 .pagination {
   display: flex;
+  margin-top: 20px;
 }
 
 .pagination__item{
+  text-align: center;
+  list-style: none;
   width: 100px;
   padding: 5px 0;
   border-radius: 10px;
@@ -14,7 +17,7 @@
   margin: 0 25px;
   cursor: pointer;
   &:hover{
-    background: $color-grey-light;
+    background: $color-grey-lighter;
   }
   &:first-child {
     margin-left: 0;
@@ -36,6 +39,12 @@
 .pagination__item--add{
   background-color: #fff;
   border: 1px dashed $border-color;
+}
+
+.pagination__item--remove{
+  background-color: #fff;
+  border: 1px solid $color-primary;
+  color: $color-primary;
 }
 
 .pagination__number{
