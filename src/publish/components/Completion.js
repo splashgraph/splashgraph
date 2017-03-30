@@ -9,7 +9,7 @@ export default class Completion extends React.Component {
   render() {
     return (
       <div>
-        <div className="banner">
+        <div className="banner banner--xl">
           <h1 className="banner__title">High five!</h1>
           <div className="banner__lead">
             Your freshly baked story has arrived. You can visit it using the link below.

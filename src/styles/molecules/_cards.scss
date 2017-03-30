@@ -1,10 +1,11 @@
-.card{
+.card {
   background-color: #fff;
   padding: 10px;
   margin: 10px;
+  box-shadow: 0 1px 3px rgba(#000, 0.15);
 }
 
-.card__image{
+.card__image {
   margin: 0 auto;
   img{
     width: 100%;
@@ -12,19 +13,26 @@
 }
 
 
-.card__header{
+.card__header {
+  padding: 10px;
+  border-bottom: 1px solid $border-color;
 
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0;
+  }
 }
 
-.card__body{
-  width: 99%;
-  margin: 0 auto;
-}
-
-.card__button{
+.card__body {
   padding: 10px;
 }
 
-.card__title{
-  text-align: center;
+.card__footer {
+  padding: 10px;
+}
+
+.card__button {
+  padding: 10px;
 }

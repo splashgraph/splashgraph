@@ -154,6 +154,7 @@ class ScatterPlot {
 ScatterPlot.info = {
   name: 'ScatterPlot',
   title: 'Scatter Plot',
+  subtitle: 'Dispersion',
   description: 'Lorem ipsum dolor sit amet consecetur dorem aelit.'
 };
 ScatterPlot.dimensionTypes = [{
