@@ -9,9 +9,17 @@ export default class Completion extends React.Component {
   render() {
     return (
       <div>
-        <h1>High five! Your freshly baked story has arrived.</h1>
-        You can visit it using the link below:<br/>
-        <a href={this.getLink()}>{this.getLink()}</a>
+        <div className="banner">
+          <h1 className="banner__title">High five!</h1>
+          <div className="banner__lead">
+            Your freshly baked story has arrived. You can visit it using the link below.
+            <br/>
+            <br/>
+            <div className="border border--dashed">
+              <a href={this.getLink()}>{this.getLink()}</a>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

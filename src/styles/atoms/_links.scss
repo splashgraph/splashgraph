@@ -1,8 +1,7 @@
-.link{
+a {
   text-decoration: none;
   color: white;
-  &:hover{
-    cursor: pointer;
+  &:hover {
     color: $color-tertiary;
   }
 }
