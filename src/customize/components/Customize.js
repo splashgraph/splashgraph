@@ -74,15 +74,15 @@ export default class Customize extends React.Component {
       }
       return (
         <div key={index}>
-          <h5>{option.label}</h5>
+          <h5 className="form-group__label">{option.label}</h5>
           {input}
         </div>
       );
     });
     return (
       <div className="container">
-        <h2>2. Customize</h2>
-        <div className="row">
+        <h2 classsName="form-group__label">2. Customize</h2>
+        <div className="row  border">
           <div className="col col--5">
             {optionInputs}
           </div>
