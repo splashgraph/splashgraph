@@ -12,6 +12,10 @@ export default function apiMiddleware() {
         return next(action);
       }
 
+      const token = getState().authState.token;
+      client.defaults.headers.common['Authorization'] = `JWT ${token}`;
+      console.log(token);
+
       const [REQUEST, SUCCESS, FAILURE] = types;
       next({...rest, type: REQUEST});
 

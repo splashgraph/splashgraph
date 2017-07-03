@@ -10,7 +10,6 @@ const config = {
 
 const strategy = new passportJwt.Strategy(config, (payload, next) => {
   User.findById(payload.id, (err, user) => {
-    console.log(user, err);
     if (err || !user) {
       next(null, false);
     } else {
