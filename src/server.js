@@ -7,6 +7,8 @@ import httpProxy from 'http-proxy';
 import path from 'path';
 import PrettyError from 'pretty-error';
 import http from 'http';
+import cookieParser from 'cookie-parser';
+import jwt from 'jsonwebtoken';
 
 import { match, RoutingContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -27,6 +29,7 @@ const proxy = httpProxy.createProxyServer({
 });
 
 app.use(compression());
+app.use(cookieParser());
 
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 
@@ -57,7 +60,12 @@ app.use((req, res) => {
   }
 
   const memoryHistory = createHistory(req.originalUrl);
-  const store = createStore(memoryHistory);
+  const store = createStore(memoryHistory, {
+    authState: {
+      token: req.cookies.token,
+      isAuthenticated: !!req.cookies.token
+    }
+  });
   const history = syncHistoryWithStore(memoryHistory, store);
 
   function hydrateOnClient() {

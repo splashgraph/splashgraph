@@ -1,4 +1,5 @@
 import express from 'express';
+import passport from 'passport';
 
 import Story from './model';
 
@@ -12,7 +13,7 @@ router.route('/')
       res.send(stories);
     });
   })
-  .post((req, res) => {
+  .post(passport.authenticate('jwt', {session: false}), (req, res) => {
 
     const story = new Story(req.body);
     story.save(err => {
